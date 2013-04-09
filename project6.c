@@ -117,21 +117,34 @@ int main(int argc, char * argv[])
     printf("#-A-D\n");
     curr = first;
     //displays linked list front to back
-    /*while(curr) {
+    while(curr) {
         printf("%d-%d-%d\n",curr -> id, curr -> arrival,curr -> durration);
         curr = curr->back ;
-    }*/
+    }
 
-    firstComeFirstServed(curr);
+    firstComeFirstServed(first);
 
 
  return 0;  
 }
 
 void firstComeFirstServed(link * curr){
-   while(curr) {
-        printf("%d-%d-%d\n",curr -> id, curr -> arrival,curr -> durration);
+    printf("----First Come First Serve Display------\n");
+    printf("Pid#\tWait\tTurnaround\n");
+    printf("---\t----\t----------\n");
+
+    int totalTime = 0;
+  
+    while(curr) {
+	int wait = 0;
+	if((totalTime - curr->arrival) > 0)
+	{
+	    wait = totalTime - curr -> arrival;
+	}
+	totalTime = totalTime + curr -> durration;	
+        int turnaround = wait + curr -> durration;		
+	printf("%d\t%d\t%d\n",curr -> id, wait,turnaround);
         curr = curr->back ;
     }
-
 }
+
