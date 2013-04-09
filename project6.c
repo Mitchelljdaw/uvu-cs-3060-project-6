@@ -1,13 +1,41 @@
-#include <stdio.h>
+// Student: Kory Kehl, Bryson Murray, James Brinkerhoff
+// Instructor: John Jolly
+// Class: CS 3060-001
+// Project: 6
+// Date: Apr 3, 2013
+// Description:
 
-int main()
+#include <stdio.h>
+#include <stdbool.h>
+
+int main(int argc, char * argv[])
 {
+	double x, y, z;
+	int processID[100];
+	int arrivalTime[100];
+	int timeToCompletion[100];
+	int i = 0;
+	int incrementLoad = 0;
+	
 	printf("Students:\n");
 	printf("\t-James Brinkerhoff - 10621032\n");
 	printf("\t-Bryson Murray - 10501259\n");
-	printf("\t-Kory Kehl - 1043993\n");
+	printf("\t-Kory Kehl - 10439952\n");
 	printf("Class CS 3060 - Project 6\n");
- 
- return 0;
-    
+	
+	// Reads in the file
+    while (scanf("%lf%lf%lf", &x, &y, &z) == 3)
+    {
+        processID[incrementLoad] = x;
+        arrivalTime[incrementLoad] = y;
+        timeToCompletion[incrementLoad] = z;
+        ++incrementLoad;
+    }
+	// Prints for checking
+    for(i = 0; i < incrementLoad; ++i)
+    {
+        printf("%d %d %d\n", processID[i], arrivalTime[i], timeToCompletion[i]);
+    }
+	
+ return 0;  
 }
