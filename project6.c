@@ -34,8 +34,25 @@ void shortestRemainingTimeNext();
 // Paramaters: none
 void roundRobin();
 
+struct listLink {
+   int id;
+   int arrival;
+   int durration;
+   struct listLink * forward;
+   struct listLink * back;
+};
+
+typedef struct listLink link;
+
 int main(int argc, char * argv[])
 {
+	link * current;
+	link * first;
+	link * last;
+	
+	first = NULL;
+	last = NULL;
+
 	double x, y, z;
 	int processID[100];
 	int arrivalTime[100];
@@ -62,6 +79,59 @@ int main(int argc, char * argv[])
     {
         printf("%d %d %d\n", processID[i], arrivalTime[i], timeToCompletion[i]);
     }
-	
+	//Linked List Creation
+    for(i = 0; i < incrementLoad; i++)
+    {
+    	current = (link *)malloc(sizeof(link));
+	current -> id = i+1;
+	current -> arrival = arrivalTime[i];
+	current -> durration = timeToCompletion[i];	
+	current -> back = NULL;
+	if(first == NULL){
+	    current -> forward = NULL;
+	    first = current;
+	}
+	else
+	{
+	    current -> forward = last;
+	}
+	if(last == NULL)
+	{
+	    last = current;
+	}
+	else
+	{
+	    last -> back = current;
+	    last = current;    	
+	}
+    }	
+    // finished making linked list
+
+    //displays link list back to front
+    /*while(current) {
+    	printf("%d-%d-%d\n",current -> id, current -> arrival,current -> durration);
+      	current = current->forward ;
+    }*/
+    link * curr;
+    printf("----Linked List Display------\n");
+    printf("#-A-D\n");
+    curr = first;
+    //displays linked list front to back
+    /*while(curr) {
+        printf("%d-%d-%d\n",curr -> id, curr -> arrival,curr -> durration);
+        curr = curr->back ;
+    }*/
+
+    firstComeFirstServed(curr);
+
+
  return 0;  
+}
+
+void firstComeFirstServed(link * curr){
+   while(curr) {
+        printf("%d-%d-%d\n",curr -> id, curr -> arrival,curr -> durration);
+        curr = curr->back ;
+    }
+
 }
