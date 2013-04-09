@@ -8,6 +8,32 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+// firstComeFirstServed
+// Description: A non-preemtive scheduling algorithm.
+// Return: none
+// Paramaters: none
+void firstComeFirstServed();
+
+// shortestJobFirst
+// Description: A non-preemtive scheduling algorithm.
+// Return: none
+// Paramaters: none
+void shortestJobFirst();
+
+// shortestRemainingTimeNext
+// Description: A preemtive version of the shortest 
+//              job first algorithm.
+// Return: none
+// Paramaters: none
+void shortestRemainingTimeNext();
+
+// roundRobin
+// Description: A preemtive scheduling algorithm. jobs
+//              are stored in a FCFS queue.
+// Return: none
+// Paramaters: none
+void roundRobin();
+
 int main(int argc, char * argv[])
 {
 	double x, y, z;
